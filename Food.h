@@ -1,25 +1,22 @@
 #include <string>
 #include <iostream>
+#include <vector>
+#include "FoodSpecification.h"
 
 using namespace std;
 
 class Food {
 
-private:
-  struct FoodSpecification {
-    float preparationTime;
-    int complexity;
-    string cookingApparatus;
-  };
-
-  FoodSpecification specification;
-
-  static const FoodSpecification typeOfFoods[];
-
 public:
-  enum foodsType {PIZZA, SALAD, ZEAMA, SCALLOP,
-                  DUCK, WAFFLES, AUBERGINE, LASAGNA};
-  Food(foodsType type);
-
+  Food(FoodSpecification::foodsType type);
+  static const vector<FoodSpecification> typeOfFoods;
   void show();
+  FoodSpecification::foodsType getType();
+  float getPreparationTime();
+  int getComplexity();
+  string getCookingApparatus();
+
+private:
+  FoodSpecification::foodsType type;
+  FoodSpecification specification;
 };

@@ -7,6 +7,7 @@ class Order {
 
 public:
   class Builder;
+  void show();
 
 private:
   Order(vector<Food*> items, int priority, float maxWait) : items(items),
@@ -26,11 +27,11 @@ public:
 
   Builder() : items( defaultItems ), priority( defaultPriority ), maxWait( defaultMaxWait ){ }
 
-  Builder& setItems( const vector<Food*> items);
-  Builder& setPriority( const int priority );
-  Builder& setMaxWait( const char maxWait );
+  Order::Builder& setItems( const vector<Food*> items);
+  Order::Builder& setPriority( const int priority );
+  Order::Builder& setMaxWait( const char maxWait );
 
-  Order build();
+  Order* build();
 
 private:
   vector<Food*> items;

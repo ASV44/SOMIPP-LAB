@@ -9,4 +9,6 @@ struct FoodSpecification {
 
   enum foodsType {PIZZA, SALAD, ZEAMA, SCALLOP,
                   DUCK, WAFFLES, AUBERGINE, LASAGNA};
+
+  static string foodsName[];
 };

@@ -15,6 +15,7 @@ public:
   float getPreparationTime();
   int getComplexity();
   string getCookingApparatus();
+  string getName();
 
 private:
   FoodSpecification::foodsType type;

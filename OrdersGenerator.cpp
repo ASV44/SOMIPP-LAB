@@ -11,7 +11,7 @@ OrdersGenerator::OrdersGenerator(int maxDelay) : maxDelay(maxDelay)
 
 void OrdersGenerator::startGeneratorThread()
 {
-  generateOrder();
+  //generateOrder();
   pthread_t threadHandle;
   pthread_create(&threadHandle, NULL, generator, static_cast<void*>(&maxDelay));
 
@@ -21,8 +21,9 @@ void OrdersGenerator::startGeneratorThread()
 void* OrdersGenerator::generator(void* arg) {
   int delay = *(static_cast<int*>(arg));
   while(true) {
-    cout << "Running on the thread" << endl;
+    cout << "Order generated" << endl;
     int random = RandomUtils::random(delay);
+    generateOrder()->show();
     // cout<< random << endl;
     sleep(random);
   }
@@ -32,13 +33,25 @@ void* OrdersGenerator::generator(void* arg) {
 
 Order* OrdersGenerator::generateOrder() {
   vector<Food*> foods;
+  float maxWait = 0;
   int foodsAmount = RandomUtils::random(1, 10);
   for(int i = 0; i < foodsAmount; i++)
   {
-    FoodSpecification::foodsType type = static_cast<FoodSpecification::foodsType>(RandomUtils::random(Food::typeOfFoods.size()));
+    int randomFoodType = RandomUtils::random(Food::typeOfFoods.size());
+    FoodSpecification::foodsType type = static_cast<FoodSpecification::foodsType>(randomFoodType);
     foods.push_back(new Food(type));
-    foods.back()->show();
+    if(maxWait < foods.back()->getPreparationTime())
+    {
+      maxWait = foods.back()->getPreparationTime();
+    }
   }
 
-  return NULL;
+  int priority  = RandomUtils::random(1, 5);
+
+  maxWait *= 1.3;
+
+  return Order::Builder().setItems(foods)
+                         .setPriority(priority)
+                         .setMaxWait(maxWait)
+                         .build();
 }

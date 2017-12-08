@@ -15,5 +15,5 @@ public:
   void work();
 
 private:
-  enum {OVEN, STOVE};
+  
 };

@@ -9,9 +9,10 @@ Food::Food(FoodSpecification::foodsType type)
 }
 
 void Food::show() {
-  std::cout << this->specification.preparationTime << '\n';
-  std::cout << this->specification.complexity << '\n';
-  std::cout << this->specification.cookingApparatus << '\n';
+  cout << endl << this->getName() << endl;
+  cout << "preparation time: " << this->specification.preparationTime << endl;
+  cout << "complexity: " << this->specification.complexity << endl;
+  cout << "cooking Apparatus: " << this->specification.cookingApparatus << endl;
 }
 
 FoodSpecification::foodsType Food::getType()
@@ -32,6 +33,12 @@ int Food::getComplexity()
 string Food::getCookingApparatus()
 {
   return this->specification.cookingApparatus;
+}
+
+string Food::getName()
+{
+  int type = this->type;
+  return FoodSpecification::foodsName[type];
 }
 
 const vector<FoodSpecification> Food::typeOfFoods = {

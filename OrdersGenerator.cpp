@@ -22,10 +22,10 @@ void* OrdersGenerator::generator(void* arg) {
   int delay = *(static_cast<int*>(arg));
   while(true) {
     cout << "Order generated" << endl;
+    Restaurant::ordersList.push_back(generateOrder());
     int random = RandomUtils::random(delay);
-    generateOrder()->show();
-    // cout<< random << endl;
     sleep(random);
+    // cout<< random << endl;
   }
 
   pthread_exit(NULL);
@@ -37,9 +37,7 @@ Order* OrdersGenerator::generateOrder() {
   int foodsAmount = RandomUtils::random(1, 10);
   for(int i = 0; i < foodsAmount; i++)
   {
-    int randomFoodType = RandomUtils::random(Food::typeOfFoods.size());
-    FoodSpecification::foodsType type = static_cast<FoodSpecification::foodsType>(randomFoodType);
-    foods.push_back(new Food(type));
+    foods.push_back(new Food());
     if(maxWait < foods.back()->getPreparationTime())
     {
       maxWait = foods.back()->getPreparationTime();

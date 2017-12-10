@@ -1,0 +1,49 @@
+{
+  "Pizza" : {
+   "preparation-time": 20,
+   "complexity": 2,
+   "cooking-apparatus": "oven"
+   },
+
+  "Salad" : {
+    "preparation-time": 10,
+    "complexity": 1,
+    "cooking-apparatus": ""
+  },
+
+  "Zeama" : {
+    "preparation-time": 7,
+    "complexity": 1,
+    "cooking-apparatus": "stove"
+  },
+
+  "Scallop" : {
+    "preparation-time": 32,
+    "complexity": 3,
+    "cooking-apparatus": ""
+  },
+
+  "Duck" : {
+    "preparation-time": 35,
+    "complexity": 3,
+    "cooking-apparatus": "oven"
+  },
+
+  "Waffles" : {
+    "preparation-time": 10,
+    "complexity": 1,
+    "cooking-apparatus": "stove"
+  },
+
+  "Aubergine" : {
+    "preparation-time": 20,
+    "complexity": 2,
+    "cooking-apparatus": ""
+  },
+
+  "Lasagna" : {
+    "preparation-time": 30,
+    "complexity": 2,
+    "cooking-apparatus": "oven"
+  }
+}

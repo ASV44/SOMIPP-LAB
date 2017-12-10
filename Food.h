@@ -1,23 +1,25 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include "FoodSpecification.h"
+#include "RestaurantMenu.h"
 
 using namespace std;
 
 class Food {
 
 public:
-  Food(FoodSpecification::foodsType type);
-  static const vector<FoodSpecification> typeOfFoods;
+  Food();
+  Food(string foodName);
   void show();
-  FoodSpecification::foodsType getType();
   float getPreparationTime();
   int getComplexity();
   string getCookingApparatus();
   string getName();
+  void initSpecification(string foodName);
 
 private:
-  FoodSpecification::foodsType type;
-  FoodSpecification specification;
+  string name;
+  float preparationTime;
+  int complexity;
+  string cookingApparatus;
 };

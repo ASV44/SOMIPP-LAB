@@ -1,5 +1,6 @@
 #include <vector>
 #include "Food.h"
+#include <chrono>
 
 using namespace std;
 
@@ -11,21 +12,19 @@ public:
   vector<Food*> getItems();
   int getPriority();
   float getMaxWait();
-  bool hasFreeFoods();
+  bool hasFreeFoods(int rank);
   Food* getItem(int index);
   void finishOrder();
   int getOrderId();
 
 private:
   Order(vector<Food*> items, int priority,
-        float maxWait, int orderId) : items(items),
-                                      priority(priority),
-                                      maxWait(maxWait),
-                                      orderId(orderId) {};
+        float maxWait, int orderId);
   vector<Food*> items;
   int priority;
   float maxWait;
   int orderId;
+  chrono::steady_clock::time_point orderStart;
 };
 
 class Order::Builder {

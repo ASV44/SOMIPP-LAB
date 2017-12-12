@@ -1,5 +1,14 @@
 #include "Order.h"
 
+Order::Order(vector<Food*> items, int priority,
+             float maxWait, int orderId) : items(items),
+                                           priority(priority),
+                                           maxWait(maxWait),
+                                           orderId(orderId)
+{
+  this->orderStart = chrono::steady_clock::now();
+}
+
 void Order::show()
 {
   for(int i = 0; i < this->items.size(); i++)
@@ -25,11 +34,11 @@ float Order::getMaxWait()
   return this->maxWait;
 }
 
-bool Order::hasFreeFoods()
+bool Order::hasFreeFoods(int rank)
 {
   for(int i = 0; i < this->items.size(); i++)
   {
-    if(this->items[i]->canTakeForPrepare())
+    if(this->items[i]->canTakeForPrepare(rank))
     {
       return true;
     }
@@ -45,8 +54,13 @@ Food* Order::getItem(int index)
 
 void Order::finishOrder()
 {
+  auto orderFinish = chrono::steady_clock::now();
+  // cout << CLOCKS_PER_SEC << endl;
+  // cout << this->orderStart << " ----- "<< orderFinish << endl;
+  double elapsedTime = std::chrono::duration_cast<std::chrono::duration<double> >(orderFinish - this->orderStart).count();
   cout << endl;
-  cout << "---------Order #" << this->orderId << " Has Been Finished!---------" << endl;
+  cout << "---------Order #" << this->orderId << " Has Been Finished in ";
+  cout << elapsedTime <<"!---------" << endl;
   this->show();
   cout << endl;
 }

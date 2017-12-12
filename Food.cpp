@@ -46,9 +46,9 @@ string Food::getCookingApparatus()
   return this->cookingApparatus;
 }
 
-bool Food::canTakeForPrepare()
+bool Food::canTakeForPrepare(int rank)
 {
-  return status == NOT_TAKEN;
+  return status == NOT_TAKEN && (rank == this->complexity || rank == this->complexity + 1);
 }
 
 void Food::setStatus(Status status)

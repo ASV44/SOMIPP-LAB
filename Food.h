@@ -19,7 +19,7 @@ public:
   string getName();
   void initSpecification(string foodName);
   enum Status { NOT_TAKEN, PREPARING, DONE};
-  bool canTakeForPrepare();
+  bool canTakeForPrepare(int rank);
   void setStatus(Status status);
   Status getStatus();
 

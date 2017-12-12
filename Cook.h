@@ -31,14 +31,15 @@ public:
   static pthread_mutex_t speakingLock;
   static void initSpeakingMutex();
   void finishFoodCooking(Cook::CookingSpecification cookingData);
+  void startFoodCooking(Cook::CookingSpecification cookingData);
 
 private:
   string name;
   int rank;
   int proficiency;
   string catchPhrase;
-  static vector<Cook::CookingSpecification> findFoods(int amount);
-  static int findBestOrder();
+  vector<Cook::CookingSpecification> findFoods(int amount);
+  static int findBestOrder(int rank);
 };
 
 #endif

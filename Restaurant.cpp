@@ -7,8 +7,9 @@ Restaurant::Restaurant() {
   cout << "Restaurant created" << endl;
   cooksManager = new CooksManager();
   this->cooks = cooksManager->getCooks();
-  this->cooks[0]->startCooking();
-  this->cooks[2]->startCooking();
+  for(int i = 0; i < this->cooks.size(); i++) {
+    this->cooks[i]->startCooking();
+  }
   this->work();
 }
 

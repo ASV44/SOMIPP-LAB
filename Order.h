@@ -16,6 +16,7 @@ public:
   Food* getItem(int index);
   void finishOrder();
   int getOrderId();
+  int getRating(double elapsedTime);
 
 private:
   Order(vector<Food*> items, int priority,

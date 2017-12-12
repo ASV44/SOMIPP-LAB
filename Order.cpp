@@ -61,6 +61,13 @@ void Order::finishOrder()
   cout << endl;
   cout << "---------Order #" << this->orderId << " Has Been Finished in ";
   cout << elapsedTime <<"!---------" << endl;
+  int rating = getRating(elapsedTime);
+  for(int i = 0; i < rating; i++)
+  {
+    cout << "\033[33m*";
+  }
+  cout << "\033[0m";
+  cout << endl;
   this->show();
   cout << endl;
 }
@@ -68,6 +75,32 @@ void Order::finishOrder()
 int Order::getOrderId()
 {
   return this->orderId;
+}
+
+int Order::getRating(double elapsedTime)
+{
+  if(elapsedTime < this->maxWait)
+  {
+    return 5;
+  }
+  else if(elapsedTime >= this->maxWait && elapsedTime < this->maxWait * 1.1)
+  {
+    return 4;
+  }
+  else if(elapsedTime >= this->maxWait * 1.1 && elapsedTime < this->maxWait * 1.2)
+  {
+    return 3;
+  }
+  else if(elapsedTime >= this->maxWait * 1.2 && elapsedTime < this->maxWait * 1.3)
+  {
+    return 2;
+  }
+  else if(elapsedTime >= this->maxWait * 1.3 && elapsedTime < this->maxWait * 1.4)
+  {
+    return 1;
+  }
+
+  return 0;
 }
 
 const vector<Food*> Order::Builder::defaultItems = vector<Food*> ();

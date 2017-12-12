@@ -1,3 +1,5 @@
+#ifndef Food_H
+#define Food_H
 #include <string>
 #include <iostream>
 #include <vector>
@@ -16,10 +18,17 @@ public:
   string getCookingApparatus();
   string getName();
   void initSpecification(string foodName);
+  enum Status { NOT_TAKEN, PREPARING, DONE};
+  bool canTakeForPrepare();
+  void setStatus(Status status);
+  Status getStatus();
 
 private:
   string name;
   float preparationTime;
   int complexity;
   string cookingApparatus;
+  Status status;
 };
+
+#endif

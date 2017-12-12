@@ -20,9 +20,13 @@ void OrdersGenerator::startGeneratorThread()
 
 void* OrdersGenerator::generator(void* arg) {
   int delay = *(static_cast<int*>(arg));
+  int generatedOrders = 0;
   while(true) {
-    cout << "Order generated" << endl;
-    Restaurant::ordersList.push_back(generateOrder());
+    // pthread_mutex_lock(&Restaurant::orderListLock);
+    cout << endl << "Generated Order #" << ++generatedOrders << endl;
+    Restaurant::ordersList.push_back(generateOrder(generatedOrders));
+    Restaurant::ordersList.back()->show();
+    // pthread_mutex_unlock(&Restaurant::orderListLock);
     int random = RandomUtils::random(delay);
     sleep(random);
     // cout<< random << endl;
@@ -31,10 +35,10 @@ void* OrdersGenerator::generator(void* arg) {
   pthread_exit(NULL);
 }
 
-Order* OrdersGenerator::generateOrder() {
+Order* OrdersGenerator::generateOrder(int orderId) {
   vector<Food*> foods;
   float maxWait = 0;
-  int foodsAmount = RandomUtils::random(1, 10);
+  int foodsAmount = RandomUtils::random(1, 5);
   for(int i = 0; i < foodsAmount; i++)
   {
     foods.push_back(new Food());
@@ -51,5 +55,6 @@ Order* OrdersGenerator::generateOrder() {
   return Order::Builder().setItems(foods)
                          .setPriority(priority)
                          .setMaxWait(maxWait)
+                         .setOrderId(orderId)
                          .build();
 }

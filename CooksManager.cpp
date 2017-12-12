@@ -23,6 +23,7 @@ CooksManager::CooksManager()
 
 vector<Cook*> CooksManager::getCooks()
 {
+  Cook::initSpeakingMutex();
   std::vector<Cook*> availableCooks = std::vector<Cook*> ();
   int cooksAmount = cooks.size();
   for(int i = 0; i < cooksAmount; i++) {

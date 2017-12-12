@@ -1,3 +1,5 @@
+#ifndef RestaurantMenu_H
+#define RestaurantMenu_H
 #include <string>
 #include "json.hpp"
 #include <fstream>
@@ -22,3 +24,5 @@ private:
 
 
 };
+
+#endif

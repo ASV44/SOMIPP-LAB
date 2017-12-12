@@ -16,6 +16,7 @@ void Food:: initSpecification(string foodName)
   this->preparationTime = RestaurantMenu::menu[foodName]["preparation-time"];
   this->complexity = RestaurantMenu::menu[foodName]["complexity"];
   this->cookingApparatus = RestaurantMenu::menu[foodName]["cooking-apparatus"];
+  this->status = NOT_TAKEN;
 }
 
 void Food::show() {
@@ -43,4 +44,19 @@ int Food::getComplexity()
 string Food::getCookingApparatus()
 {
   return this->cookingApparatus;
+}
+
+bool Food::canTakeForPrepare()
+{
+  return status == NOT_TAKEN;
+}
+
+void Food::setStatus(Status status)
+{
+  this->status = status;
+}
+
+Food::Status Food::getStatus()
+{
+  return this->status;
 }

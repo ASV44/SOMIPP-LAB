@@ -12,7 +12,7 @@ class OrdersGenerator {
 public:
   OrdersGenerator();
   OrdersGenerator(int maxDelay);
-  static Order* generateOrder();
+  static Order* generateOrder(int orderId);
 
 private:
   int maxDelay = 20;

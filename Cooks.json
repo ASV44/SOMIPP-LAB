@@ -5,6 +5,27 @@
       "proficiency": 3,
       "name": "Gordon Ramsay",
       "catch-phrase": "Hey, panini head, are you listening to me?"
+    },
+
+    {
+      "rank": 3,
+      "proficiency": 2,
+      "name": "Oliver James",
+      "catch-phrase": "Eat true food, not a pink slime"
+    },
+
+    {
+      "rank": 3,
+      "proficiency": 4,
+      "name": "Darth Vader",
+      "catch-phrase": "Just feel the taste of the dark side"
+    },
+
+    {
+      "rank": 2,
+      "proficiency": 1,
+      "name": "Batman",
+      "catch-phrase": "You Either Eat Like A Hero, Or Endure Long Enough To See Yourself Become Hungry"
     }
   ]
 }

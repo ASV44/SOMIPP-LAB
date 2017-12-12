@@ -1,3 +1,5 @@
+#ifndef RandomUtils_H
+#define RandomUtils_H
 #include <stdlib.h>
 #include <time.h>
 
@@ -28,3 +30,5 @@ public:
       return result;
   }
 };
+
+#endif
